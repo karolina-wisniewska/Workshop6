@@ -20,7 +20,10 @@ public class BookController {
     public List<Book> getAllBooks(MockBookService mockBookService) {
         return mockBookService.getAllBooks();
     }
-
+    @GetMapping("/books/{index}")
+    public Book getBookById(@PathVariable long index, MockBookService mockBookService) {
+        return mockBookService.getBookById(index);
+    }
 
     @PostMapping("/books")
     public void addBook(@RequestBody Book book){

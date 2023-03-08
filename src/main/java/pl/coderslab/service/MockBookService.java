@@ -5,6 +5,7 @@ import pl.coderslab.bean.Book;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class MockBookService {
@@ -28,6 +29,10 @@ public class MockBookService {
 
     public List<Book> getAllBooks(){
         return this.list;
+    }
+
+    public Book getBookById(long index){
+        return list.stream().filter(n->n.getId().equals(index)).findAny().orElse(null);
     }
 
 }
