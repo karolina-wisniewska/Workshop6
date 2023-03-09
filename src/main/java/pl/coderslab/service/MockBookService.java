@@ -1,12 +1,10 @@
 package pl.coderslab.service;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 import pl.coderslab.bean.Book;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class MockBookService {
@@ -46,7 +44,13 @@ public class MockBookService {
         nextId++;
     }
 
-    public void delete(long index){
+    public void editBook(Book book){
+        long indexToEdit = book.getId();
+        list.set((int) indexToEdit-1, book);
+    }
+
+
+    public void deleteBook(long index){
         Book bookToDelete = list.stream()
                 .filter(n->n.getId()
                         .equals(index)).

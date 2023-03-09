@@ -1,6 +1,5 @@
 package pl.coderslab.controller;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.bean.Book;
 import pl.coderslab.service.MockBookService;
@@ -38,8 +37,13 @@ public class BookController {
         mockBookService.addBook(book);
     }
 
+    @PutMapping("")
+    public void editBook(@RequestBody Book book){
+        mockBookService.editBook(book);
+    }
+
     @DeleteMapping("/{index}")
     public void deleteBook(@PathVariable long index) {
-        mockBookService.delete(index);
+        mockBookService.deleteBook(index);
     }
 }
