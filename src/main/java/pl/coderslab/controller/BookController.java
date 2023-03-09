@@ -34,8 +34,8 @@ public class BookController {
     }
 
     @PostMapping("")
-    public Book addBook(@RequestBody Book book){
-        return book;
+    public void addBook(@RequestBody Book book){
+        mockBookService.addBook(book);
     }
 
     @DeleteMapping("/{index}")

@@ -41,13 +41,7 @@ public class MockBookService {
     }
 
     public void addBook(Book book){
-        Book bookToAdd = new Book();
-        bookToAdd.setId(nextId);
-        bookToAdd.setIsbn(book.getIsbn());
-        bookToAdd.setTitle(book.getTitle());
-        bookToAdd.setAuthor(book.getAuthor());
-        bookToAdd.setPublisher(book.getPublisher());
-        bookToAdd.setType(book.getType());
+        book.setId(nextId);
         this.list.add(book);
         nextId++;
     }
