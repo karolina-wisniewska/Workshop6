@@ -1,5 +1,6 @@
 package pl.coderslab.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.bean.Book;
 import pl.coderslab.service.MockBookService;
@@ -7,8 +8,14 @@ import pl.coderslab.service.MockBookService;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/books")
+@RequestMapping("/books")
 public class BookController {
+
+    private MockBookService mockBookService;
+
+    public BookController(MockBookService mockBookService) {
+        this.mockBookService = mockBookService;
+    }
 
     @RequestMapping("/helloBook")
     public Book helloBook() {
@@ -16,18 +23,23 @@ public class BookController {
                 "Bruce Eckel", "Helion", "programming");
     }
 
-    @GetMapping("/books")
-    public List<Book> getAllBooks(MockBookService mockBookService) {
+    @GetMapping("")
+    public List<Book> getAllBooks() {
         return mockBookService.getAllBooks();
     }
-    @GetMapping("/books/{index}")
-    public Book getBookById(@PathVariable long index, MockBookService mockBookService) {
+
+    @GetMapping("/{index}")
+    public Book getBookById(@PathVariable long index) {
         return mockBookService.getBookById(index);
     }
 
-    @PostMapping("/books")
-    public void addBook(@RequestBody Book book){
-        // operacje na obiekcie book
+    @PostMapping("")
+    public Book addBook(@RequestBody Book book){
+        return book;
+    }
 
+    @DeleteMapping("/{index}")
+    public void deleteBook(@PathVariable long index) {
+        mockBookService.delete(index);
     }
 }

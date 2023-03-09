@@ -1,5 +1,9 @@
 package pl.coderslab.bean;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 public class Book {
     private Long id;
     private String isbn;
@@ -8,8 +12,19 @@ public class Book {
     private String publisher;
     private String type;
 
+    public Book() {
+    }
+
     public Book(Long id, String isbn, String title, String author, String publisher, String type) {
         this.id = id;
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.type = type;
+    }
+
+    public Book(String isbn, String title, String author, String publisher, String type) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -63,5 +78,17 @@ public class Book {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
