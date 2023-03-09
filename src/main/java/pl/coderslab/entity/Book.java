@@ -1,8 +1,4 @@
-package pl.coderslab.bean;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+package pl.coderslab.entity;
 
 public class Book {
     private Long id;

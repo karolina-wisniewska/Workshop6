@@ -1,7 +1,7 @@
-package pl.coderslab.service;
+package pl.coderslab.bean;
 
 import org.springframework.stereotype.Component;
-import pl.coderslab.bean.Book;
+import pl.coderslab.entity.Book;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class MockBookService {
 
     public static void main(String[] args) {
         MockBookService test = new MockBookService();
-        test.addBook(new Book( "9788324631766", "Thiniking	in	Java", "Bruce	Eckel", "Helion", "programming"));
+        test.addBook(new Book("9788324631766", "Thiniking	in	Java", "Bruce	Eckel", "Helion", "programming"));
     }
 
     public MockBookService() {
@@ -26,33 +26,33 @@ public class MockBookService {
                 "programming"));
     }
 
-    public List<Book> getAllBooks(){
+    public List<Book> getAllBooks() {
         return this.list;
     }
 
-    public Book getBookById(long index){
+    public Book getBookById(long index) {
         return list.stream()
-                .filter(n->n.getId()
+                .filter(n -> n.getId()
                         .equals(index))
                 .findAny()
                 .orElse(null);
     }
 
-    public void addBook(Book book){
+    public void addBook(Book book) {
         book.setId(nextId);
         this.list.add(book);
         nextId++;
     }
 
-    public void editBook(Book book){
+    public void editBook(Book book) {
         long indexToEdit = book.getId();
-        list.set((int) indexToEdit-1, book);
+        list.set((int) indexToEdit - 1, book);
     }
 
 
-    public void deleteBook(long index){
+    public void deleteBook(long index) {
         Book bookToDelete = list.stream()
-                .filter(n->n.getId()
+                .filter(n -> n.getId()
                         .equals(index)).
                 findAny().
                 orElse(null);

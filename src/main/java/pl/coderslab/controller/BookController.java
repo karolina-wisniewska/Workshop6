@@ -1,8 +1,8 @@
 package pl.coderslab.controller;
 
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.bean.Book;
-import pl.coderslab.service.MockBookService;
+import pl.coderslab.bean.MockBookService;
+import pl.coderslab.entity.Book;
 
 import java.util.List;
 
@@ -33,12 +33,12 @@ public class BookController {
     }
 
     @PostMapping("")
-    public void addBook(@RequestBody Book book){
+    public void addBook(@RequestBody Book book) {
         mockBookService.addBook(book);
     }
 
     @PutMapping("")
-    public void editBook(@RequestBody Book book){
+    public void editBook(@RequestBody Book book) {
         mockBookService.editBook(book);
     }
 
