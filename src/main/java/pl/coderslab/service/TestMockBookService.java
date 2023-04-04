@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class MockBookService implements BookService {
+public class TestMockBookService implements BookService {
   private List<Book> list;
   private static Long nextId = 0L;
 
-  public MockBookService() {
+  public TestMockBookService() {
     list = new ArrayList<>();
 
     addBook(Book.builder()

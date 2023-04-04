@@ -1,6 +1,7 @@
 package pl.coderslab.controller;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,22 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import pl.coderslab.service.BookService;
-import pl.coderslab.service.MockBookService;
 import pl.coderslab.entity.Book;
+import pl.coderslab.service.BookService;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/books")
+@RequiredArgsConstructor
 public class BookController {
 
-    private BookService bookService;
-
-    public BookController(MockBookService mockBookService) {
-        this.bookService = mockBookService;
-    }
+    private final BookService bookService;
 
     @RequestMapping("/helloBook")
     @ResponseStatus(HttpStatus.OK)
