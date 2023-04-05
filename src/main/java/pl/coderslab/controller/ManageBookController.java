@@ -52,4 +52,16 @@ public class ManageBookController {
     return "redirect:all";
   }
 
+  @GetMapping(path = "/delete")
+  String deleteBook(@RequestParam Long id) {
+    bookService.deleteBook(id);
+    return "redirect:all";
+  }
+
+  @GetMapping(path = "/details")
+  String findById(@RequestParam Long id, Model model) {
+    Book book = bookService.getBookById(id);
+    model.addAttribute("book", book);
+    return "books/details";
+  }
 }

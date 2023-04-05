@@ -14,10 +14,8 @@
     <th>isbn</th>
     <th>publisher</th>
     <th>type</th>
-    <th>actions</th>
     </thead>
     <tbody>
-    <c:forEach items="${books}" var="book">
         <tr>
             <td><c:out value="${book.id}"/></td>
             <td><c:out value="${book.title}"/></td>
@@ -25,9 +23,7 @@
             <td><c:out value="${book.isbn}"/></td>
             <td><c:out value="${book.publisher}"/></td>
             <td><c:out value="${book.type}"/></td>
-            <td><a href="edit?id=${book.id}">Edit</a> <a href="delete?id=${book.id}">Delete</a> <a href="details?id=${book.id}">Details</a></td>
         </tr>
-    </c:forEach>
     </tbody>
 </table>
 </body>
