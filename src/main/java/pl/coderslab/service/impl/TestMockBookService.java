@@ -1,13 +1,16 @@
-package pl.coderslab.service;
+package pl.coderslab.service.impl;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pl.coderslab.entity.Book;
+import pl.coderslab.service.BookService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class TestMockBookService implements BookService {
   private List<Book> list;
   private static Long nextId = 0L;
@@ -48,7 +51,7 @@ public class TestMockBookService implements BookService {
     return this.list;
   }
 
-  public Book getBookById(long index) {
+  public Book getBookById(Long index) {
     return list.stream()
             .filter(n -> n.getId().equals(index))
             .findAny()
@@ -67,7 +70,7 @@ public class TestMockBookService implements BookService {
                     .build()));
   }
 
-  public void updateBook(long bookId, Book book) {
+  public void updateBook(Long bookId, Book book) {
     Optional.ofNullable(book)
             .filter(n -> bookId > 0)
             .map(n -> getBookById(bookId))
@@ -75,7 +78,7 @@ public class TestMockBookService implements BookService {
             .ifPresent(n -> list.set(n, book));
   }
 
-  public void deleteBook(long index) {
+  public void deleteBook(Long index) {
     Optional.ofNullable(getBookById(index))
             .ifPresent(n -> list.remove(n));
   }
