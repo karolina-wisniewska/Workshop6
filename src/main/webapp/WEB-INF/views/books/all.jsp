@@ -15,9 +15,11 @@
     <tbody>
     <c:forEach items="${books}" var="book">
         <tr>
-            <td><c:out value="${book.isbn}"/></td>
             <td><c:out value="${book.title}"/></td>
             <td><c:out value="${book.author}"/></td>
+            <td><c:out value="${book.isbn}"/></td>
+            <td><c:out value="${book.publisher}"/></td>
+            <td><c:out value="${book.type}"/></td>
         </tr>
     </c:forEach>
     </tbody>
