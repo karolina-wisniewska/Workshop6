@@ -25,7 +25,10 @@
             <td><c:out value="${book.isbn}"/></td>
             <td><c:out value="${book.publisher}"/></td>
             <td><c:out value="${book.type}"/></td>
-            <td><a href="edit?id=${book.id}">Edit</a> <a href="delete?id=${book.id}">Delete</a> <a href="details?id=${book.id}">Details</a></td>
+            <td><a href="<c:out value="edit?id=${book.id}"/>">Edit</a>
+                <a href="<c:out value="delete?id=${book.id}"/>">Delete</a>
+                <a href="<c:out value="details?id=${book.id}"/>">Details</a>
+            </td>
         </tr>
     </c:forEach>
     </tbody>

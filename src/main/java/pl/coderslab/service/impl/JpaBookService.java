@@ -8,6 +8,7 @@ import pl.coderslab.entity.Book;
 import pl.coderslab.repository.BookRepository;
 import pl.coderslab.service.BookService;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class JpaBookService implements BookService {
 
   @Override
   public Book getBookById(Long index) {
-    return bookRepository.findById(index).orElse(null);
+    return bookRepository.findById(index).orElseThrow(EntityNotFoundException::new);
   }
 
   @Override

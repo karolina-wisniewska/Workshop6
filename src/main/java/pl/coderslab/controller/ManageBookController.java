@@ -35,7 +35,10 @@ public class ManageBookController {
   }
 
   @PostMapping(path = "/add")
-  String processAddBookForm(Book book) {
+  String processAddBookForm(@Valid Book book, BindingResult result) {
+    if(result.hasErrors()){
+      return "books/add";
+    }
     bookService.addBook(book);
     return "redirect:all";
   }
@@ -47,7 +50,10 @@ public class ManageBookController {
   }
 
   @PostMapping(path = "/edit")
-  String processEditBookForm(Book book, @RequestParam Long id) {
+  String processEditBookForm(@Valid Book book, @RequestParam Long id, BindingResult result) {
+    if(result.hasErrors()){
+      return "books/edit";
+    }
     bookService.updateBook(id, book);
     return "redirect:all";
   }
